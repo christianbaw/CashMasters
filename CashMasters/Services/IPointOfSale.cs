@@ -33,6 +33,7 @@ namespace CashMasters.Services
             if (totalPaymentProvided < totalPrice)
                 throw new PaymentNotEnoughToCoverTotalPrice();
 
+            //using extension method to round up total price
             var change = totalPaymentProvided - totalPrice.RoundUpValue();
 
             var currency = _currency.Denominations
@@ -58,7 +59,7 @@ namespace CashMasters.Services
 
             return customerChange
                 .GroupBy(g => g.Denomination)
-                .Select(x => new Change (x.Key, x.Sum(s => s.Quantity) ));
+                .Select(x => new Change (x.Key, x.Sum(s => s.Quantity)));
         }
     }
 }
