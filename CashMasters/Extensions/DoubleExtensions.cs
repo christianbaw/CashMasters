@@ -10,11 +10,6 @@ namespace CashMasters.Extensions
     {
         public static double RoundUpValue(this double value)
         {
-            return RoundValue(value);
-        }
-
-        private static double RoundValue(double value)
-        {
             var result = Math.Round(value, 1);
             if (result < value)
             {
