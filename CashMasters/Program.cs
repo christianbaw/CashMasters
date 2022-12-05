@@ -25,7 +25,6 @@ namespace CashMasters
         /// <summary>
         /// Retrieves the denomination configuration, to configure default denomination refer to the file appsettings.json
         /// </summary>
-        /// <returns></returns>
         static IHost BuildHost()
         {
             var configuration = new ConfigurationBuilder()
@@ -33,7 +32,7 @@ namespace CashMasters
                 .AddJsonFile("appsettings.json", optional: false)
                 .Build();
 
-            IHost host = Host.CreateDefaultBuilder()
+            var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
                 {
                     services.AddScoped<IPointOfSale, PointOfSale>();
